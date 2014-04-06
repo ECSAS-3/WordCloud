@@ -1,0 +1,17 @@
+{
+  "name": "wordcloud",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.8",
+    "jade": "*",
+    "twitter": "~0.2.9",
+    "aws-sdk": "~2.0.0",
+    "d3": "~3.4.4",
+    "underscore": "~1.6.0",
+    "jsdom": "~0.10.5"
+  }
+}
