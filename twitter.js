@@ -3,6 +3,8 @@
 
 //Christopher Scott
 
+
+//Twitter Setup
 var util = require('util'),
 twitter = require('twitter');
 var twit = new twitter({
@@ -12,6 +14,8 @@ var twit = new twitter({
 	access_token_secret: '3mHJ98q7stLjSUvY1Wp8aBIa5mqSkpkQZCINXwLqo3Si3'
 });
 
+
+//Take input from the command line
 var readline = require('readline');
 
 var rl = readline.createInterface({
@@ -19,12 +23,28 @@ var rl = readline.createInterface({
 	output: process.stdout
 });
 
-rl.question("What would you like to search for? ", function(input) {
-	twit.search(input, function(data) {
-		for (i=0; i<data.statuses.length; i++){
-			console.log(data.statuses[i].text);
-		}
+//Pull search term from command line
+function userQuery(){
+	rl.question("What would you like to search for? ", function(term) {
+		var res = search(term);
+		console.log("Querying WordCloud for", term);
+		console.log(res);
+		rl.close();
 	});
-	console.log("Querying WordCloud for", input);
-	rl.close();
-});
+}
+
+//
+function search(term){
+	twit.search(term, function(data) {
+		return data;
+	}
+}
+
+function printTweets(data){
+	for (i=0; i<data.statuses.length; i++){
+	console.log(data.statuses[i].text);
+}
+
+//printTweets(search("Tinder"));
+
+//Still have to add function that parses results to a list of words (tokens)
