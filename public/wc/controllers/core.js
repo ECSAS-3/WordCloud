@@ -7,6 +7,7 @@ function searchCtrl($scope) {
 
      $scope.search = function() {
         console.log($scope.searchData);
+        $scope.searchData = "";
      };
 };
 
