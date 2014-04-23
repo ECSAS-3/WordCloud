@@ -4,6 +4,18 @@
         font-size: 12px;
       }
 
+      #search {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        /*background: url(http://talkincloud.com/site-files/talkincloud.com/files/imagecache/medium_img/uploads/2013/08/cloud222.jpg) top left no-repeat;
+        background-size: 50%*/
+      }
+
+      #about-link {
+        padding-left: 25px;
+        padding-top: 5px;
+      }
+
       .svg-chart .background {
         shape-rendering: crispEdges;
         stroke: #ccc;

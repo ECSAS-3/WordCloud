@@ -2,6 +2,14 @@
 
 angular.module('wordCloudApp', ['d3', 'nvd3ChartDirectives']);
 
+function searchCtrl($scope) {
+     $scope.searchData = "";
+
+     $scope.search = function() {
+        console.log($scope.searchData);
+     };
+};
+
 function wordCloudCtrl($scope) {
     $scope.wordsIn =
         ["Hallo","Test","Lorem", "yo", "arg", "phone", "mac"];
