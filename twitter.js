@@ -3,7 +3,6 @@
 
 //Christopher Scott
 
-
 //Twitter Setup
 var util = require('util'),
 twitter = require('twitter');
@@ -14,37 +13,58 @@ var twit = new twitter({
 	access_token_secret: '3mHJ98q7stLjSUvY1Wp8aBIa5mqSkpkQZCINXwLqo3Si3'
 });
 
-
-//Take input from the command line
-var readline = require('readline');
-
-var rl = readline.createInterface({
-	input: process.stdin,
-	output: process.stdout
-});
-
 //Pull search term from command line
 function userQuery(){
+	//Take input from the command line
+	var readline = require('readline');
+
+	var rl = readline.createInterface({
+		input: process.stdin,
+		output: process.stdout
+	});
+
 	rl.question("What would you like to search for? ", function(term) {
-		var res = search(term);
+		twit.search(term, function(data) {
+			console.log(data);
+		});
 		console.log("Querying WordCloud for", term);
-		console.log(res);
 		rl.close();
 	});
 }
 
-//
-function search(term){
+function printTweets(term){
 	twit.search(term, function(data) {
-		return data;
-	}
+		for (i=0; i<data.statuses.length; i++){
+			console.log(data.statuses[i].text);
+		}
+	});
 }
 
-function printTweets(data){
-	for (i=0; i<data.statuses.length; i++){
-	console.log(data.statuses[i].text);
+var wordArray = {}
+function tokenizer(term){
+	twit.search(term, function(that) {
+		var data = that;
+		console.log(data);
+		for (var i=0; i<data.statuses.length; i++){
+			var text = data.statuses[i].text;
+			var res = text.split(" ");
+			for (var j=0; j<res.length; j++){
+
+				if (wordArray.res[j] === null){
+					wordArray.res[j] = 1;
+					//console.log(wordArray.res[j]);
+				} else {
+					wordArray.res[j]++;
+				}
+			}
+		}
+	});
 }
 
-//printTweets(search("Tinder"));
 
-//Still have to add function that parses results to a list of words (tokens)
+
+//userQuery();
+tokenizer("tinder");
+for (var i=0; i<wordArray.length; i++){
+	console.log(wordArray[i][0]);
+}
