@@ -1,6 +1,12 @@
 'use strict';
 
+var showWC = false;
+var listWords = ["Hi"];
+var listWordSize = ["100"];
+var listNumWords = "1";
+
 angular.module('wordCloudApp', ['d3', 'nvd3ChartDirectives']);
+
 
 function searchCtrl($scope) {
      $scope.searchData = "";
@@ -8,28 +14,35 @@ function searchCtrl($scope) {
      $scope.search = function() {
         console.log($scope.searchData);
         $scope.searchData = "";
+
+        listWords.push("Test");
+        //console.log(listWords);
+        listWordSize.push("200");
+        listNumWords = (parseInt(listNumWords)+1).toString();
+
+        showWC = !showWC;
+
      };
 };
 
 function wordCloudCtrl($scope) {
-    $scope.wordsIn =
-        ["Hallo","Test","Lorem", "yo", "arg", "phone", "mac"];
+    $scope.showWC = function () {
+      return showWC;
+  };
+    //console.log($scope);
+    $scope.wordsIn = listWords;
 
     //describes size of word matching scope.wordsIn by index
-    $scope.wordSize = ["30", "50", "100", "50", "100", "100", "200"];
+    $scope.wordSize = listWordSize;
+    $scope.numWords = listNumWords;
 
-    $scope.numWords = "7";
-}
-  // .controller('MainCtrl', ['$scope',function ($scope) {
+    $scope.$watch("wordsIn", function(){
+        $scope.wordsIn = listWords;
+        $scope.wordSize = listWordSize;
+        $scope.numWords = listNumWords;
+    }, true);
 
-  //       $scope.myOnClickFunction = function(element){
-  //           console.log("click",element);
-  //       }
-
-  //       $scope.myOnHoverFunction = function(element){
-  //           console.log("hover",element);
-  //       }
-  // }]);
+};
 
 
 function pieChartCtrl($scope){

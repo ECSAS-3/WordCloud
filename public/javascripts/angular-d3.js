@@ -9563,7 +9563,6 @@ angular.module('d3').directive('wordcloud', [
         if (angular.isDefined(attrs.numwords)) {
           numWords = scope.numwords;
         }
-
         var cloudFactory = function (words) {
           var fill = d3.scale.category20();
 
@@ -9586,6 +9585,7 @@ angular.module('d3').directive('wordcloud', [
             var height_translate = height / 2;
             var width_translate = width / 2;
             var rootElement = element[0];
+            d3.selectAll("svg").remove(); //remove all svgs so only one instance of svg at a time
             d3.select(rootElement).append('svg').attr('width', width).attr('height', height).append('g').attr('transform', 'translate(' + width_translate + ',' + height_translate + ')').selectAll('text').data(words).enter().append('text').style('font-size', function (d) {
               return d.size + 'px';
             }).style('font-family', fontFamily).style('fill', function (d, i) {
@@ -9605,10 +9605,18 @@ angular.module('d3').directive('wordcloud', [
           }
         };
         cloudFactory(words);
+        //this now allows for dynamic wordcloud instead of a static wordcloud
+        scope.$watch("numwords",function(newValue,oldValue) {
+          cloudFactory(words);
+        });
       }
+
     };
   }
-]);
+]
+);
+
+
 'use strict';
 angular.module('d3').config([
   '$provide',

@@ -54,7 +54,7 @@
     </div>
 
     <!-- wordcloud -->
-    <div class="container" ng-controller="wordCloudCtrl">
+    <div ng-show="showWC()" class="container" ng-controller="wordCloudCtrl">
         <wordcloud
         words="wordsIn"
         size="wordSize"
