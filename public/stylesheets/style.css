@@ -1,6 +1,6 @@
       body {
-        background-color: #ffffff;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        background-color: #BEBEBE;
+        font-family: 'Special Elite', Helvetica, Arial, sans-serif;
         font-size: 12px;
       }
 
@@ -10,14 +10,15 @@
 
       #search {
         padding-top: 140px;
-        padding-bottom: 70px;
-        background: url(http://www.gamesparks.com/wp-content/uploads/2013/07/the-cloud.jpg) top center no-repeat;
+        padding-bottom: 80px;
+        background: url(http://i.imgur.com/xiEVt3n.png) top center no-repeat;
         background-size: 40%;   
       }
 
       #about-link {
         padding-left: 25px;
         padding-top: 5px;
+        color:white;
       }
 
       .svg-chart .background {
