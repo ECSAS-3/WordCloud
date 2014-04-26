@@ -40,31 +40,34 @@ function printTweets(term){
 	});
 }
 
-var wordArray = {}
-function tokenizer(term){
-	twit.search(term, function(that) {
-		var data = that;
-		console.log(data);
-		for (var i=0; i<data.statuses.length; i++){
+function tokenizer(term, callback){
+	twit.search(term, count=50, function(data) {
+		var wordArray = {};
+		var len = data.statuses.length;
+		//console.log(len);
+		for (var i=0; i<len; i++){
+			//console.log(data.statuses[i]);
 			var text = data.statuses[i].text;
 			var res = text.split(" ");
+			//console.log(res);
 			for (var j=0; j<res.length; j++){
-
-				if (wordArray.res[j] === null){
-					wordArray.res[j] = 1;
+				if (res[j].toLowerCase() in wordArray){
+					wordArray[res[j]]++;
 					//console.log(wordArray.res[j]);
 				} else {
-					wordArray.res[j]++;
+					wordArray[res[j].toLowerCase()] = 1;
 				}
 			}
-		}
+		}callback(wordArray);
 	});
 }
 
-
-
 //userQuery();
-tokenizer("tinder");
-for (var i=0; i<wordArray.length; i++){
-	console.log(wordArray[i][0]);
-}
+tokenizer("tinder", function(w){
+	//console.log(w);
+	for (word in w){
+		if(w[word]>1){
+			console.log("%s - %d", word, w[word]);
+		}
+	}
+});
