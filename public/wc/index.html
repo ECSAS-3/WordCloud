@@ -39,7 +39,18 @@
 
     <!-- header -->
     <div class="container">
-        <h1><a href="#">Word Cloud</a></h1>
+        <div class="row">
+            <div class="col-md-6">
+                <h1><a href="#">LexiCloud</a></h1>
+            </div>
+            <div class="col-md-6" align="right">
+                <form id="login" role="form" class="form-inline">
+                    <input type='text' placeholder="Username">
+                    <input type="password" placeholder="Password">
+                    <button type="submit" class="btn btn-primary btn-xs">Log In</button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <!-- search bar -->
@@ -54,15 +65,26 @@
     </div>
 
     <!-- wordcloud -->
-    <div ng-show="showWC()" class="container" ng-controller="wordCloudCtrl">
+    <div ng-show="showWC()" class="container" align="center" ng-controller="wordCloudCtrl">
         <wordcloud
         words="wordsIn"
         size="wordSize"
         numwords="numWords">
-    </wordcloud>
+        </wordcloud>
+    </div>
+
+    <!-- About -->
+    <div class="container"
+    <div class="row">
+        <div id="about" align="left" class="col-md-8">
+        <h4>What is this?</h4>
+        <p>A search queries twitter for tweets containing the search word. These tweets are parsed for most frequent words and the frequency of each word is used to produce a LexiCloud! Give it a try!</p>
+        </div>
+    </div>
+    </div>
 
     <!-- piechart -->
-    <div ng-controller="pieChartCtrl">
+    <!--div ng-controller="pieChartCtrl">
         <nvd3-pie-chart
         width="500"
         height="500"
@@ -75,9 +97,16 @@
         showValues="true"
         labelType="percent">
         <svg></svg>
-    </nvd3-pie-chart>
+    </nvd3-pie-chart-->
 
     <script src="./wc/controllers/core.js"></script>
+
+    <hr>
+    <div class='container'>
+    <div class="footer">
+        <p>&copy; 2014</p>
+    </div>
+    </div>
 
 </body>
 </html>

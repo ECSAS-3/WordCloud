@@ -1,14 +1,18 @@
       body {
-        background-color: #f5f5f5;
+        background-color: #ffffff;
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         font-size: 12px;
       }
 
+      #login {
+        padding-top: 20px;
+      }
+
       #search {
-        padding-top: 50px;
-        padding-bottom: 50px;
-        /*background: url(http://talkincloud.com/site-files/talkincloud.com/files/imagecache/medium_img/uploads/2013/08/cloud222.jpg) top left no-repeat;
-        background-size: 50%*/
+        padding-top: 140px;
+        padding-bottom: 70px;
+        background: url(http://www.gamesparks.com/wp-content/uploads/2013/07/the-cloud.jpg) top center no-repeat;
+        background-size: 40%;   
       }
 
       #about-link {
