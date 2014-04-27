@@ -73,6 +73,9 @@ function calculateVal(a){		//used to change spelling to sound values
 	var i;
 	nA += a[0].toUpperCase();
 	for(i=1; i<a.length; i++){
+		if($.inArray(a[i], toDelete !== -1){
+			nA+=0;
+		}
 		if($.inArray(a[i], labial) !== -1){		//inArray finds the index and returns -1 if it doesn't exist
 			nA += 1;
 		}
@@ -97,6 +100,13 @@ function calculateVal(a){		//used to change spelling to sound values
 			continue;
 		}
 		
+	}
+	
+	var j;
+	for(j=0; j<nA.length; j++){
+		if(nA.charAt(j) === nA.charAt(j+1)){
+			nA = a.substr(0, j)+a.substr(j+1, nA.length);
+		}
 	}
 	return nA;
 }
