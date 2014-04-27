@@ -10,7 +10,7 @@
 
       #search {
         padding-top: 140px;
-        padding-bottom: 80px;
+        padding-bottom: 140px;
         background: url(http://i.imgur.com/xiEVt3n.png) top center no-repeat;
         background-size: 40%;   
       }
@@ -29,3 +29,27 @@
       }
 
       .svg-chart .bar { fill: #4682B4; }
+      
+      /* unvisited link */
+      a:link {
+        color:#000000;
+        text-decoration: none;
+      }      
+      
+      /* visited link */
+      a:visited {
+        color:#000000;
+        text-decoration: none;
+      }
+
+      /* mouse over link */    
+      a:hover {
+        color:#000000; 
+        text-decoration: none;
+      }  
+
+      /* selected link */
+      a:active {
+        color:#000000; 
+        text-decoration: none;
+      }  
