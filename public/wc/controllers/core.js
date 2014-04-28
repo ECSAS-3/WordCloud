@@ -20,10 +20,12 @@ var twit = new twitter({
 	access_token_secret: '3mHJ98q7stLjSUvY1Wp8aBIa5mqSkpkQZCINXwLqo3Si3'
 });
 
+module.exports
 
-/*---------------------BACK-END----------------*/
+
+/*---------------------BACK-END---------------------*/
 /*
- *TWITTER
+ *˙
  */
 //Pull search term from command line
 function userQuery(){
@@ -74,7 +76,6 @@ function tokenizer(term, callback){
 	});
 }
 
-//userQuery();
 tokenizer("tinder", function(w){
 	//console.log(w);
 	for (word in w){
