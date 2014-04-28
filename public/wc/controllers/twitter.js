@@ -1,18 +1,11 @@
-'use strict';
+//twtitter.js
+//CS 326 Spring 2014
 
-//wordcloud init
-var showWC = false;
-var listWords = ["Hi"];
-var listWordSize = ["100"];
-var listNumWords = "1";
+//Christopher Scott
 
-
-angular.module('wordCloudApp', ['d3', 'nvd3ChartDirectives']);
-
-
-//twitter init
-//(make sure below angular.module!)
-var twitter = require('twitter');
+//Twitter Setup
+var util = require('util'),
+twitter = require('twitter');
 var twit = new twitter({
 	consumer_key: '5fBdLw6wzZL9S5AKbfaVfZnGn',
 	consumer_secret: 'SGyNotse02dMUP8C6ehYJ1zGmj1vV95TV53N3cMvGopEUdHFm5',
@@ -20,13 +13,6 @@ var twit = new twitter({
 	access_token_secret: '3mHJ98q7stLjSUvY1Wp8aBIa5mqSkpkQZCINXwLqo3Si3'
 });
 
-module.exports
-
-
-/*---------------------BACK-END---------------------*/
-/*
- *˙
- */
 //Pull search term from command line
 function userQuery(){
 	//Take input from the command line
@@ -55,7 +41,7 @@ function printTweets(term){
 }
 
 function tokenizer(term, callback){
-	twit.search(term, count=50, function(data) {
+	twit.search(term, function(data) {
 		var wordArray = {};
 		var len = data.statuses.length;
 		//console.log(len);
@@ -75,7 +61,10 @@ function tokenizer(term, callback){
 		}callback(wordArray);
 	});
 }
+/*var searchString = ("search/tweets.json?q=%s&result_type=mixed&count=30" , term)
+	twit.get(searchString, {include_entities:true}, function(data) {*/
 
+//userQuery();
 tokenizer("tinder", function(w){
 	//console.log(w);
 	for (word in w){
@@ -84,47 +73,3 @@ tokenizer("tinder", function(w){
 		}
 	}
 });
-
-/*---------------------FRONT-END----------------*/
-/*
- * Search Bar
- */
-function searchCtrl($scope) {
-     $scope.searchData = "";
-
-     $scope.search = function() {
-        console.log($scope.searchData);
-        $scope.searchData = "";
-
-        listWords.push("Test");
-        //console.log(listWords);
-        listWordSize.push("200");
-        listNumWords = (parseInt(listNumWords)+1).toString();
-
-        showWC = !showWC;
-
-     };
-};
-
-/*
- * Visualizations
- */
-function wordCloudCtrl($scope) {
-    $scope.showWC = function () {
-      return showWC;
-  };
-    //console.log($scope);
-    $scope.wordsIn = listWords;
-
-    //describes size of word matching scope.wordsIn by index
-    $scope.wordSize = listWordSize;
-    $scope.numWords = listNumWords;
-
-    $scope.$watch("wordsIn", function(){
-        $scope.wordsIn = listWords;
-        $scope.wordSize = listWordSize;
-        $scope.numWords = listNumWords;
-    }, true);
-
-};
-
