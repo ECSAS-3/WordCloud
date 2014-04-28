@@ -1,11 +1,4 @@
-//twtitter.js
-//CS 326 Spring 2014
-
-//Christopher Scott
-
-//Twitter Setup
-var util = require('util'),
-twitter = require('twitter');
+var twitter = require('twitter');
 var twit = new twitter({
 	consumer_key: '5fBdLw6wzZL9S5AKbfaVfZnGn',
 	consumer_secret: 'SGyNotse02dMUP8C6ehYJ1zGmj1vV95TV53N3cMvGopEUdHFm5',
@@ -13,6 +6,11 @@ var twit = new twitter({
 	access_token_secret: '3mHJ98q7stLjSUvY1Wp8aBIa5mqSkpkQZCINXwLqo3Si3'
 });
 
+
+/*---------------------BACK-END----------------*/
+/*
+ *TWITTER
+ */
 //Pull search term from command line
 function userQuery(){
 	//Take input from the command line
@@ -41,7 +39,7 @@ function printTweets(term){
 }
 
 function tokenizer(term, callback){
-	twit.search(term, count=50, function(data) {
+	twit.search(term, function(data) {
 		var wordArray = {};
 		var len = data.statuses.length;
 		//console.log(len);
@@ -63,11 +61,20 @@ function tokenizer(term, callback){
 }
 
 //userQuery();
-tokenizer("tinder", function(w){
-	//console.log(w);
-	for (word in w){
-		if(w[word]>1){
-			console.log("%s - %d", word, w[word]);
+
+
+
+
+
+exports.wordcloud = function(req, res){
+	tokenizer("tinder", function(w){
+		//console.log(w);
+		for (word in w){
+			if(w[word]>1){
+				res.render('index', { title: w[word] });
+				//console.log("%s - %d", word, w[word]);
+			}
 		}
-	}
-});
+	});
+
+ };

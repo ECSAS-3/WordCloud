@@ -1,13 +1,18 @@
 'use strict';
 
+//wordcloud init
 var showWC = false;
 var listWords = ["Hi"];
 var listWordSize = ["100"];
 var listNumWords = "1";
 
 angular.module('wordCloudApp', ['d3', 'nvd3ChartDirectives']);
+module.exports
 
-
+/*---------------------FRONT-END----------------*/
+/*
+ * Search Bar
+ */
 function searchCtrl($scope) {
      $scope.searchData = "";
 
@@ -25,6 +30,9 @@ function searchCtrl($scope) {
      };
 };
 
+/*
+ * Visualizations
+ */
 function wordCloudCtrl($scope) {
     $scope.showWC = function () {
       return showWC;
@@ -44,41 +52,3 @@ function wordCloudCtrl($scope) {
 
 };
 
-
-function pieChartCtrl($scope){
-    $scope.exampleData = [
-    {
-        key: "One",
-        y: 10
-    },
-    {
-        key: "Two",
-        y: 10
-    },
-    {
-        key: "Three",
-        y: 10
-    },
-    {
-        key: "Four",
-        y: 20
-    }
-    ];
-
-    $scope.xFunction = function(){
-        return function(d) {
-            return d.key;
-        };
-    }
-    $scope.yFunction = function(){
-        return function(d) {
-            return d.y;
-        };
-    }
-
-    $scope.descriptionFunction = function(){
-        return function(d){
-            return d.key;
-        }
-    }
-}

@@ -9522,7 +9522,7 @@ angular.module('d3').directive('wordcloud', [
       link: function postLink(scope, element, attrs) {
         var width = 800;
         var height = 600;
-        var fontFamily = 'Impact';
+        var fontFamily = 'Special Elite';
         var fontSize = 100;
         var words;
         var sizeWord;
