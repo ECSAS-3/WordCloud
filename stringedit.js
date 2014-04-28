@@ -1,3 +1,33 @@
+// var jquery = require('jquery');
+// var $ = jquery.create();
+
+/*var firstString = "a hair's breath";
+var secondString = "a hare's breadth";
+
+var other = "windshield";
+var others = "windchill";
+
+var slaw = "cold slaw";
+var slaw2 = "cole slaw";
+
+var q=calculateVal(firstString);
+var p =calculateVal(secondString);
+//r= padZeros(q,p);
+//console.log("q: "+q+ "p: "+p+"r: "+r);
+
+console.log(getSoundex(firstString, secondString));
+
+console.log(damerauLevenshteinDistance(firstString, secondString));
+
+console.log("Windchill eggcorn:"+editex(other, others));
+console.log("Windchill  sound:" +getSoundex(other, others));
+
+console.log("Slaw eggcorn:"+getSoundex(slaw, slaw2));
+console.log("Slaw edit:" +editex(slaw, slaw2));
+*/
+
+
+
 function damerauLevenshteinDistance(s, t) {
   // Determine the Damerau-Levenshtein distance between s and t
   if (!s || !t) {
@@ -73,7 +103,7 @@ function calculateVal(a){		//used to change spelling to sound values
 	var i;
 	nA += a[0].toUpperCase();
 	for(i=1; i<a.length; i++){
-		if($.inArray(a[i], toDelete !== -1){
+		if($.inArray(a[i], toDelete) !== -1){
 			nA+=0;
 		}
 		if($.inArray(a[i], labial) !== -1){		//inArray finds the index and returns -1 if it doesn't exist
@@ -83,18 +113,18 @@ function calculateVal(a){		//used to change spelling to sound values
 			nA += 2;
 		}
 		else if ($.inArray(a[i], alveolarStops) !== -1){
-			nA += 3
+			nA += 3;
 		}
 		else if ($.inArray(a[i], liquids) !== -1){
-			nA += 4
+			nA += 4;
 		}
 		
 		else if ($.inArray(a[i], nasals) !== -1){
-			nA += 5
+			nA += 5;
 		}
 		
 		else if ($.inArray(a[i], rhotics) !== -1){
-			nA += 6
+			nA += 6;
 		}
 		else{  //anything not in the preceding categories can be ignored
 			continue;
@@ -105,7 +135,7 @@ function calculateVal(a){		//used to change spelling to sound values
 	var j;
 	for(j=0; j<nA.length; j++){
 		if(nA.charAt(j) === nA.charAt(j+1)){
-			nA = a.substr(0, j)+a.substr(j+1, nA.length);
+			nA = nA.substring(0, j)+nA.substring(j+1, nA.length);
 		}
 	}
 	return nA;
@@ -119,14 +149,78 @@ function getSoundex(a, b){
 	if ( soundA.length !== soundB.length){
 		if(soundB.length < soundA.length){
 			//soundB = addZeros(soundB, soundA);
-			soundA = soundA.substr(0, soundB.length-1);
+			soundA = soundA.substring(0, soundB.length-1);
 		}
 		else{
 			//soundA = addZeros(soundA, soundB);
-			soundB = soundB.substr(0, soundA.length-1);
+			soundB = soundB.substring(0, soundA.length-1);
 			
 		}
 	}
 	return (damerauLevenshteinDistance(soundA, soundB));
 }
 
+
+//Editex Algorithm
+
+//Classes
+
+var vow = new Array("a", "e", "i", "o", "u", "y");	//vowels; heaven help us
+var bilab = new Array("b", "p");						//bilabial stops
+var velar = new Array("c", "k", "q");					//velar stops
+var alveolar = new Array("d", "t");						//alveolar stops
+var approx = new Array("l", "r");						//laterals and rhotics (always classed together in phonetic analyses. Lemme know if you want to know more)
+var nas = new Array("m", "n");							//nasals
+var alvfric = new Array("g", "j");						//postalveolar voiced fricative
+var bilabfric = new Array("f", "p", "v");				//bilabial fricative (voiced and unvoiced placed together?)
+var esy = new Array("s", "x", "z");					//alveolar fricatives
+var shy = new Array("c", "s", "z");						//postalveolar unvoiced fricative
+
+//index will be used as rating system
+var masterClass = new Array(vow, bilab, velar, alveolar, approx, nas, alvfric, bilabfric, esy, shy);
+
+function checkChar(a, b){
+	if( a=== b){
+		return 0;
+	}
+	else{
+		for(entry = 0; entry<masterClass.length; entry++){
+			if($.inArray(a, masterClass[entry]) !== -1){
+				if($.inArray(b, masterClass[entry])!== -1){
+					return 1;
+				}
+			}
+		}		//make sure this works!
+	}
+	return 2;
+}
+
+function editex(stringA, stringB){
+	//initialize the matrix
+	var board = new Array(stringA.length);
+	var g;
+	for (g = 0; g< stringA.length; g++){
+		board[g] = new Array(stringB.length);
+	}
+	
+	var i;
+	var j;
+	board[0][0] = 0;
+	for(i=1; i<stringA.length; i++){																		//initializing values
+		board[i][0] = board[i-1][0]+checkChar(stringA.charAt(i-1), stringA.charAt(i)); //checks for matching letters within the string	
+	}
+	for(i=1; i<stringB.length; i++){
+		board[0][i] = board[0][i-1]+checkChar(stringB.charAt(i-1), stringB.charAt(i));
+	}
+	
+	for(i=1; i<stringA.length; i++){
+		for(j = 1; j<stringB.length; j++){
+			board[i][j] = Math.min( board[i-1][j] + checkChar(stringA.charAt(i-1), stringA.charAt(i)),
+											board[i][j-1] + checkChar(stringB.charAt(j-1), stringB.charAt(j)),
+											board[i-1][j-1] + checkChar(stringA.charAt(i), stringB.charAt(j)));
+			
+		}
+	}
+	
+	return board[stringA.length-1][stringB.length-1];
+}
