@@ -12,7 +12,7 @@ var twit = new twitter({
  *TWITTER
  */
 //Pull search term from command line
-function userQuery(){
+f/*unction userQuery(){
 	//Take input from the command line
 	var readline = require('readline');
 
@@ -37,7 +37,7 @@ function printTweets(term){
 		}
 	});
 }
-
+*/
 function tokenizer(term, callback){
 	twit.search(term, function(data) {
 		var wordArray = {};
@@ -60,21 +60,18 @@ function tokenizer(term, callback){
 	});
 }
 
-//userQuery();
-
-
-
-
-
 exports.wordcloud = function(req, res){
-	tokenizer("tinder", function(w){
+	tokenizer("tedxumassamherst", function(w){
 		//console.log(w);
+		var longAns = '';
 		for (word in w){
 			if(w[word]>1){
-				res.render('index', { title: w[word] });
+				longAns += ("%s -", word) + " " + "\n";
+				longAns += " ";
+				longAns += ("%d\n", w[word]);
 				//console.log("%s - %d", word, w[word]);
 			}
 		}
+		res.render('index', { title: longAns });
 	});
-
- };
+};
