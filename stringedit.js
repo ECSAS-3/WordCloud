@@ -1,30 +1,30 @@
 // var jquery = require('jquery');
 // var $ = jquery.create();
+$(function(){
+	var firstString = "a hair's breath";
+	var secondString = "a hare's breadth";
 
-/*var firstString = "a hair's breath";
-var secondString = "a hare's breadth";
+	var other = "windshield";
+	var others = "windchill";
 
-var other = "windshield";
-var others = "windchill";
+	var slaw = "cold slaw";
+	var slaw2 = "cole slaw";
 
-var slaw = "cold slaw";
-var slaw2 = "cole slaw";
+	var q=calculateVal(firstString);
+	var p =calculateVal(secondString);
+	//r= padZeros(q,p);
+	//console.log("q: "+q+ "p: "+p+"r: "+r);
 
-var q=calculateVal(firstString);
-var p =calculateVal(secondString);
-//r= padZeros(q,p);
-//console.log("q: "+q+ "p: "+p+"r: "+r);
+	console.log(getSoundex(firstString, secondString));
 
-console.log(getSoundex(firstString, secondString));
+	console.log(damerauLevenshteinDistance(firstString, secondString));
 
-console.log(damerauLevenshteinDistance(firstString, secondString));
+	console.log("Windchill eggcorn:"+editex(other, others));
+	console.log("Windchill  sound:" +getSoundex(other, others));
 
-console.log("Windchill eggcorn:"+editex(other, others));
-console.log("Windchill  sound:" +getSoundex(other, others));
-
-console.log("Slaw eggcorn:"+getSoundex(slaw, slaw2));
-console.log("Slaw edit:" +editex(slaw, slaw2));
-*/
+	console.log("Slaw eggcorn:"+getSoundex(slaw, slaw2));
+	console.log("Slaw edit:" +editex(slaw, slaw2));
+});
 
 
 
