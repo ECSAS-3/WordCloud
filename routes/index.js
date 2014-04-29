@@ -12,7 +12,7 @@ var twit = new twitter({
  *TWITTER
  */
 //Pull search term from command line
-f/*unction userQuery(){
+/*function userQuery(){
 	//Take input from the command line
 	var readline = require('readline');
 
@@ -61,7 +61,7 @@ function tokenizer(term, callback){
 }
 
 exports.wordcloud = function(req, res){
-	tokenizer("tedxumassamherst", function(w){
+	tokenizer("pokemon", function(w){
 		//console.log(w);
 		var longAns = '';
 		for (word in w){

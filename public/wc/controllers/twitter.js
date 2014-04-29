@@ -65,7 +65,7 @@ function tokenizer(term, callback){
 	twit.get(searchString, {include_entities:true}, function(data) {*/
 
 //userQuery();
-tokenizer("tinder", function(w){
+tokenizer("pokemon", function(w){
 	//console.log(w);
 	for (word in w){
 		if(w[word]>1){
