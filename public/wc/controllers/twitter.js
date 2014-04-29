@@ -68,7 +68,7 @@ function tokenizer(term, callback){
 tokenizer("pokemon", function(w){
 	//console.log(w);
 	for (word in w){
-		if(w[word]>1){
+		if(w[word]>0){
 			console.log("%s - %d", word, w[word]);
 		}
 	}

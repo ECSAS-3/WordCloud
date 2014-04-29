@@ -65,7 +65,7 @@ exports.wordcloud = function(req, res){
 		//console.log(w);
 		var longAns = '';
 		for (word in w){
-			if(w[word]>1){
+			if(w[word]>0){
 				longAns += ("%s -", word) + " " + "\n";
 				longAns += " ";
 				longAns += ("%d\n", w[word]);
