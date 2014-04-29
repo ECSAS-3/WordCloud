@@ -61,17 +61,22 @@ function tokenizer(term, callback){
 }
 
 exports.wordcloud = function(req, res){
-	tokenizer("pokemon", function(w){
+	tokenizer("doge", function(w){
 		//console.log(w);
 		var longAns = '';
 		for (word in w){
 			if(w[word]>0){
-				longAns += ("%s -", word) + " " + "\n";
+				longAns += ("%s", word);
+				longAns += "-";
+				longAns += ("%d", w[word]);
+				longAns += ";";
+				longAns += "\t";
 				longAns += " ";
-				longAns += ("%d\n", w[word]);
-				//console.log("%s - %d", word, w[word]);
 			}
 		}
-		res.render('index', { title: longAns });
+		res.render('index', {
+			title: "LexiCloud",
+			response: longAns
+		});
 	});
 };
