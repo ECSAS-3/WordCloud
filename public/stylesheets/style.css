@@ -9,17 +9,22 @@
       }
 
       #search {
-        padding-top: 140px;
-        padding-bottom: 140px;
-        background: url(http://i.imgur.com/xiEVt3n.png) top center no-repeat;
-        background-size: 40%;  
-        min-height: 700px; 
+        padding-top: 300px;
+        padding-bottom: 200px;
+        background: url(http://i.imgur.com/xiEVt3n.png) no-repeat center center;
+        background-size: 90%;  
+        background-position: center center;
+        min-height: 670px; 
       }
 
       #about-link-div {
-        padding-left: 25px;
-        padding-top: 10px;
+        padding-left: 130px;
+        padding-top: 5px;
         color:white;
+      }
+
+      .form-inline .form-group input {
+        width: 300px;
       }
 
       .svg-chart .background {
@@ -37,13 +42,13 @@
       
       /* unvisited link */
       a:link {
-        color:#000000;
+        color:#ffffff;
         text-decoration: none;
       }      
       
       /* visited link */
       a:visited {
-        color:#000000;
+        color:#ffffff;
         text-decoration: none;
       }
 
