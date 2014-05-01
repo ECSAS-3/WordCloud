@@ -51,7 +51,10 @@ function tokenizer(term, callback){
 			var res = text.split(" ");
 			//console.log(res);
 			for (var j=0; j<res.length; j++){
-				if (res[j].toLowerCase() in wordArray){
+				if(isStopWord(res[j].toLowerCase())){
+					continue;
+				}
+				else if (res[j].toLowerCase() in wordArray){
 					wordArray[res[j]]++;
 					//console.log(wordArray.res[j]);
 				} else {
@@ -61,20 +64,23 @@ function tokenizer(term, callback){
 		}callback(wordArray);
 	});
 }
-/*var searchString = ("search/tweets.json?q=%s&result_type=mixed&count=30" , term)
-	twit.get(searchString, {include_entities:true}, function(data) {*/
 
 //userQuery();
-tokenizer("doge", function(w){
+tokenizer("tinder", function(w){
 	//console.log(w);
 	for (word in w){
-<<<<<<< HEAD
-		if(w[word]>0){
-			console.log("%s - %d", word, w[word]);
-=======
 		if(w[word]>1){
-			console.log("%s - %d", word, w[word]*2);
->>>>>>> FETCH_HEAD
+			console.log("%s - %d", word, w[word]);
 		}
 	}
 });
+
+//Stop Word Functions and Such
+
+var stopWord = new Array("I","a","about","an","are","as","at","be","by","for","from","how","in","is","it","of","on","or","that","that's",
+						"thats","the","this","to","too","was","what","what's","whats","when","when's","whens","where","where's","wheres",
+						"who","who's","whos","whose","will","with","the");
+
+function isStopWord(word){
+	return stopWord.indexOf(word) >-1;
+}
