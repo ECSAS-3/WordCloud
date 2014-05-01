@@ -7,7 +7,7 @@ var listWordSize = ["100"];
 var listNumWords = "1";
 
 angular.module('wordCloudApp', ['d3', 'nvd3ChartDirectives']);
-module.exports
+//module.exports
 
 /*---------------------FRONT-END----------------*/
 /*
@@ -20,7 +20,10 @@ function searchCtrl($scope) {
         console.log($scope.searchData);
         $scope.searchData = "";
 
-        listWords.push("Test");
+        listWords.push("shibe");
+        listWords.push("Doge");
+        listWords.push("Wow");
+        listWords.push("such");
         //console.log(listWords);
         listWordSize.push("200");
         listNumWords = (parseInt(listNumWords)+1).toString();

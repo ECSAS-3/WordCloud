@@ -12,12 +12,13 @@
         padding-top: 140px;
         padding-bottom: 140px;
         background: url(http://i.imgur.com/xiEVt3n.png) top center no-repeat;
-        background-size: 40%;   
+        background-size: 40%;  
+        min-height: 700px; 
       }
 
-      #about-link {
+      #about-link-div {
         padding-left: 25px;
-        padding-top: 5px;
+        padding-top: 10px;
         color:white;
       }
 
@@ -29,6 +30,10 @@
       }
 
       .svg-chart .bar { fill: #4682B4; }
+
+      .footer {
+        min-height: 550px;
+      }
       
       /* unvisited link */
       a:link {

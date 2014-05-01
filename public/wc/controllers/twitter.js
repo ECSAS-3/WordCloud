@@ -65,10 +65,10 @@ function tokenizer(term, callback){
 	twit.get(searchString, {include_entities:true}, function(data) {*/
 
 //userQuery();
-tokenizer("pokemon", function(w){
+tokenizer("doge", function(w){
 	//console.log(w);
 	for (word in w){
-		if(w[word]>1){
+		if(w[word]>0){
 			console.log("%s - %d", word, w[word]);
 		}
 	}
