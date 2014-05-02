@@ -1,5 +1,6 @@
 // var jquery = require('jquery');
 // var $ = jquery.create();
+/*
 $(function(){
 	var firstString = "a hair's breath";
 	var secondString = "a hare's breadth";
@@ -25,7 +26,7 @@ $(function(){
 	console.log("Slaw eggcorn:"+getSoundex(slaw, slaw2));
 	console.log("Slaw edit:" +editex(slaw, slaw2));
 });
-
+*/
 
 
 function damerauLevenshteinDistance(s, t) {
