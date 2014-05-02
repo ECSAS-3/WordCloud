@@ -39,7 +39,7 @@ function printTweets(term){
 		}
 	});
 }
-
+var globalArray = {};
 function tokenizer(term, callback){
 	twit.search(term, function(data) {
 		var wordArray = {};
@@ -61,18 +61,18 @@ function tokenizer(term, callback){
 					wordArray[res[j].toLowerCase()] = 1;
 				}
 			}
-		}callback(wordArray);
+		}globalArray = wordArray;
+		callback(wordArray);
 	});
 }
 
 //userQuery();
 tokenizer("tinder", function(w){
-	//console.log(w);
 	for (word in w){
 		if(w[word]>1){
-			console.log("%s - %d", word, w[word]);
+			//console.log("%s - %d", word, w[word]);
 		}
-	}
+	}	console.log(globalArray);
 });
 
 //Stop Word Functions and Such
