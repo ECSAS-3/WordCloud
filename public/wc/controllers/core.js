@@ -2,7 +2,7 @@
 
 //wordcloud init
 var showWC = false;
-var listWords = ["Hi"];
+var listWords = [];
 var listWordSize = ["100"];
 var listNumWords = "1";
 
@@ -18,12 +18,15 @@ function searchCtrl($scope) {
 
      $scope.search = function() {
         console.log($scope.searchData);
+
+        // take user input, split string into array
+        var words = ($scope.searchData).split(" ");
+        var freq = [];
+        for (var i = 0; i < words.length; i++) {
+            listWords.push(words[i]);
+        }
         $scope.searchData = "";
 
-        listWords.push("shibe");
-        listWords.push("Doge");
-        listWords.push("Wow");
-        listWords.push("such");
         //console.log(listWords);
         listWordSize.push("200");
         listNumWords = (parseInt(listNumWords)+1).toString();
