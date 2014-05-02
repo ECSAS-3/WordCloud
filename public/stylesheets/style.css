@@ -1,65 +1,93 @@
-      body {
-        background-color: #BEBEBE;
-        font-family: 'Special Elite', Helvetica, Arial, sans-serif;
-        font-size: 12px;
-      }
+body {
+  background-color: #BEBEBE;
+  font-family: 'Special Elite', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}
 
-      #login {
-        padding-top: 20px;
-      }
+#login {
+  padding-top: 20px;
+}
 
-      #search {
-        padding-top: 300px;
-        padding-bottom: 200px;
-        background: url(http://i.imgur.com/xiEVt3n.png) no-repeat center center;
-        background-size: 80%;  
-        background-position: center center;
-        min-height: 670px; 
-      }
+#search {
+  padding-top: 300px;
+  padding-bottom: 200px;
+  background: url(http://i.imgur.com/xiEVt3n.png) no-repeat center center;
+  background-size: 90%;  
+  background-position: center center;
+  min-height: 670px; 
+}
 
-      #about-link-div {
-        padding-left: 130px;
-        padding-top: 5px;
-        color:white;
-      }
+#about-link-div {
+  padding-left: 130px;
+  padding-top: 5px;
+  color:white;
+}
 
-      .form-inline .form-group input {
-        width: 300px;
-      }
+/* search bar */
+.form-inline .form-group input {
+  width: 300px; /* make the search bar longer */
+}
 
-      .svg-chart .background {
-        shape-rendering: crispEdges;
-        stroke: #ccc;
-        fill: #fdfdfd;
-        stroke-width: 1px;
-      }
+.svg-chart .background {
+  shape-rendering: crispEdges;
+  stroke: #ccc;
+  fill: #fdfdfd;
+  stroke-width: 1px;
+}
 
-      .svg-chart .bar { fill: #4682B4; }
+.svg-chart .bar { fill: #4682B4; }
 
-      .footer {
-        min-height: 550px;
-      }
+/* div containing wordcloud */
+#cloud {
+  min-height: 700px; /* set height of wordcloud section */
+}
       
-      /* unvisited link */
-      a:link {
-        color:#ffffff;
-        text-decoration: none;
-      }      
+/* footer */
+.footer {
+  min-height: 575px; /* set height of footer section */
+}
+
+/* back to top button */
+.back-to-top {
+    position: fixed;
+    bottom: 2em;
+    left: 50%;
+    text-decoration: none;
+    color: #000000;
+    background-color: rgba(235, 235, 235, 0.80);
+    background: url(http://31.media.tumblr.com/tumblr_m7c17eKvW41r9ncq8o1_500.png) no-repeat;
+    background-size: 100%;
+    font-size: 12px;
+    padding: 1em;
+    display: none;
+    height: 100px;
+    width: 100px;
+}
+
+#back-to-top {
+
+}
+
+/* unvisited link */
+a:link {
+  color:#ffffff;
+  text-decoration: none;
+}      
       
-      /* visited link */
-      a:visited {
-        color:#ffffff;
-        text-decoration: none;
-      }
+/* visited link */
+a:visited {
+  color:#ffffff;
+  text-decoration: none;
+}
 
-      /* mouse over link */    
-      a:hover {
-        color:#000000; 
-        text-decoration: none;
-      }  
+/* mouse over link */    
+a:hover {
+  color:#000000; 
+  text-decoration: none;
+}  
 
-      /* selected link */
-      a:active {
-        color:#000000; 
-        text-decoration: none;
-      }  
+/* selected link */
+a:active {
+  color:#000000; 
+  text-decoration: none;
+}  
