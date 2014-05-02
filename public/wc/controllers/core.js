@@ -3,7 +3,7 @@
 //wordcloud init
 var showWC = false;
 var listWords = [];
-var listWordSize = ["100"];
+var listWordSize = [];
 var listNumWords = "1";
 
 angular.module('wordCloudApp', ['d3', 'nvd3ChartDirectives']);
@@ -20,19 +20,17 @@ function searchCtrl($scope) {
         console.log($scope.searchData);
 
         // take user input, split string into array
-        var words = ($scope.searchData).split(" ");
-        var freq = [];
+        var words = ($scope.searchData).split(" ").sort();
         for (var i = 0; i < words.length; i++) {
             listWords.push(words[i]);
         }
         $scope.searchData = "";
 
         //console.log(listWords);
-        listWordSize.push("200");
+        listWordSize.push("100");
         listNumWords = (parseInt(listNumWords)+1).toString();
 
         showWC = !showWC;
-
      };
 };
 

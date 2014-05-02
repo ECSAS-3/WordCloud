@@ -21,10 +21,15 @@ $(document).ready(function (){
         }
     });
     
-    $('.back-to-top').click(function(event) {
-        event.preventDefault();
+    $('.back-to-top').click(function() {
+    //    event.preventDefault();
         $('html, body').animate({scrollTop: 0}, duration);
-        return false;
-    })
+        return false;        
+    });
+
+    $('.back-to-top').unbind('click').click(function() {
+    //    event.preventDefault();
+        location.reload();
+    });
 
 }); // close document ready
