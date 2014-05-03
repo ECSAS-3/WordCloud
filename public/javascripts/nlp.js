@@ -104,27 +104,27 @@ function calculateVal(a){		//used to change spelling to sound values
 	var i;
 	nA += a[0].toUpperCase();
 	for(i=1; i<a.length; i++){
-		if($.inArray(a[i], toDelete) !== -1){
+		if(toDelete.indexOf(a[i]) > -1){
 			nA+=0;
 		}
-		if($.inArray(a[i], labial) !== -1){		//inArray finds the index and returns -1 if it doesn't exist
+		else if(labial.indexOf(a[i]) > -1){		//inArray finds the index and returns -1 if it doesn't exist
 			nA += 1;
 		}
-		else if ($.inArray(a[i], weirdSounds) !==-1){
+		else if (weirdSounds.indexOf(a[i]) > -1){
 			nA += 2;
 		}
-		else if ($.inArray(a[i], alveolarStops) !== -1){
+		else if (alveolarStops.indexOf(a[i]) > -1){
 			nA += 3;
 		}
-		else if ($.inArray(a[i], liquids) !== -1){
+		else if (liquids.indexOf(a[i]) > -1){
 			nA += 4;
 		}
 		
-		else if ($.inArray(a[i], nasals) !== -1){
+		else if (nasals.indexOf(a[i]) > -1){
 			nA += 5;
 		}
 		
-		else if ($.inArray(a[i], rhotics) !== -1){
+		else if (rhotics.indexOf(a[i]) > -1){
 			nA += 6;
 		}
 		else{  //anything not in the preceding categories can be ignored
@@ -186,8 +186,8 @@ function checkChar(a, b){
 	}
 	else{
 		for(entry = 0; entry<masterClass.length; entry++){
-			if($.inArray(a, masterClass[entry]) !== -1){
-				if($.inArray(b, masterClass[entry])!== -1){
+			if(masterClass[entry].indexOf(a) > -1){
+				if(masterClass[entry].indexOf(b) > -1){
 					return 1;
 				}
 			}
