@@ -27,7 +27,7 @@ function searchCtrl($scope) {
         $scope.searchData = "";
 
         //console.log(listWords);
-        listWordSize.push("100");
+        listWordSize.push("50");
         listNumWords = (parseInt(listNumWords)+1).toString();
 
         showWC = !showWC;
