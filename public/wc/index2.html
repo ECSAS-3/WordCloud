@@ -67,9 +67,9 @@
     <div id="search" class="container" ng-controller="searchCtrl">
         <form align='center' role='form' class='form-inline' name='search-form' ng-submit="submit()">
                 <div class='form-group'>
-                <input type='text' name='search' ng-model='searchData' placeholder='Enter a search term' class='form-control'>
+                <input type='text' name='search' ng-model='searchData' placeholder='Enter your text' class='form-control'>
                 </div>
-                <button id="submit-btn" type="submit" ng-click="search()" class='btn btn-primary'>Search</button>
+                <button id="submit-btn" type="submit" ng-click="search()" class='btn btn-primary'>Generate Cloud</button>
             </form>
             <p id="about-link-div" align='center'><a href="#" id="about-link">What is this?</a></p>
     </div>
@@ -88,7 +88,7 @@
     <div class="row">
         <div id="about" align="left" class="page-section">
         <h4>What is this?</h4>
-        <p>A search queries Twitter for tweets containing the search word. These tweets are parsed for most frequent words and the frequency of each word is used to produce a LexiCloud! Give it a try!</p>
+        <p>Enter a string of text in the search bar and click 'Generate Cloud' to produce a visually-appealing representation of your text!</p>
         </div>
     </div>
     </div>
