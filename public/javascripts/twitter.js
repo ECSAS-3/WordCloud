@@ -39,10 +39,13 @@ function printTweets(term){
 		}
 	});
 }
+
 var globalArray = {};
 function tokenizer(term, callback){
 	twit.search(term, function(data) {
+		console.log("data statuses is type", typeof(data.statuses));
 		var wordArray = {};
+		console.log("Hey baby ",data.statuses);
 		var len = data.statuses.length;
 		//console.log(len);
 		for (var i=0; i<len; i++){
@@ -51,17 +54,20 @@ function tokenizer(term, callback){
 			var res = text.split(" ");
 			//console.log(res);
 			for (var j=0; j<res.length; j++){
-				if(isStopWord(res[j].toLowerCase())){
+				var currWord = res[j].toLowerCase();
+				currWord = currWord.replace(/[\.,-\/!$%\^&\*;:{}=\-_`~()]/g,"");
+				if(isStopWord(currWord)){
 					continue;
 				}
-				else if (res[j].toLowerCase() in wordArray){
-					wordArray[res[j]]++;
+				else if (currWord in wordArray){
+					wordArray[currWord]++;
 					//console.log(wordArray.res[j]);
 				} else {
-					wordArray[res[j].toLowerCase()] = 1;
+					wordArray[currWord] = 1;
 				}
 			}
-		}globalArray = wordArray;
+		}
+		globalArray = wordArray;
 		callback(wordArray);
 	});
 }
