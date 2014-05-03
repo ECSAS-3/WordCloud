@@ -66,13 +66,13 @@ function tokenizer(term, callback){
 	});
 }
 
-//userQuery();
-tokenizer("tinder", function(w){
+tokenizer("doge", function(w){
+	//console.log(w);
 	for (word in w){
-		if(w[word]>1){
-			//console.log("%s - %d", word, w[word]);
+		if(w[word]>0){
+			console.log("%s - %d", word, w[word]*2);
 		}
-	}	console.log(globalArray);
+	}
 });
 
 //Stop Word Functions and Such

@@ -37,7 +37,7 @@ function printTweets(term){
 		}
 	});
 }
-
+*/
 function tokenizer(term, callback){
 	twit.search(term, function(data) {
 		var wordArray = {};
@@ -59,7 +59,7 @@ function tokenizer(term, callback){
 		}callback(wordArray);
 	});
 }
-*/
+
 exports.wordcloud = function(req, res){
 	tokenizer("doge", function(w){
 		//console.log(w);

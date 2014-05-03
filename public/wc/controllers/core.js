@@ -13,11 +13,11 @@ angular.module('wordCloudApp', ['d3', 'nvd3ChartDirectives']);
 /*
  * Search Bar
  */
-function searchCtrl($scope) {
-     $scope.searchData = "";
+ function searchCtrl($scope) {
+   $scope.searchData = "";
 
-     $scope.search = function() {
-        console.log($scope.searchData);
+   $scope.search = function() {
+    console.log($scope.searchData);
 
         // take user input, split string into array
         var words = ($scope.searchData).split(" ").sort();
@@ -28,16 +28,22 @@ function searchCtrl($scope) {
 
         //console.log(listWords);
         listWordSize.push("100");
-        listNumWords = (parseInt(listNumWords)+1).toString();
+        /*$.getScript("./javascripts/twitter.js", function(){
+            listWords.push("we made it - Drake");
+            console.log("but its not broken");
+            alert("Script loaded and executed.");
+   // Here you can use anything you defined in the loaded script
+});*/
+listNumWords = (parseInt(listNumWords)+1).toString();
 
-        showWC = !showWC;
-     };
+showWC = !showWC;
+};
 };
 
 /*
  * Visualizations
  */
-function wordCloudCtrl($scope) {
+ function wordCloudCtrl($scope) {
     $scope.showWC = function () {
       return showWC;
   };
@@ -56,3 +62,12 @@ function wordCloudCtrl($scope) {
 
 };
 
+$.getScript("./javascripts/twitter.js", function(){
+    tokenizer("doge", function(w){
+        for (word in w){
+            if(w[word]>0){
+                console.log("%s - %d", word, w[word]*2);
+            }
+        }
+    });
+});
