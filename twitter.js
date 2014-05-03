@@ -39,6 +39,7 @@ function printTweets(term){
 		}
 	});
 }
+
 var globalArray = {};
 function tokenizer(term, callback){
 	twit.search(term, function(data) {
@@ -61,25 +62,25 @@ function tokenizer(term, callback){
 					wordArray[res[j].toLowerCase()] = 1;
 				}
 			}
-		}globalArray = wordArray;
+		}
+		globalArray = wordArray;
 		callback(wordArray);
 	});
 }
 
-//userQuery();
 tokenizer("tinder", function(w){
 	for (word in w){
 		if(w[word]>1){
 			//console.log("%s - %d", word, w[word]);
 		}
-	}	console.log(globalArray);
+	}	
+	//console.log(globalArray); -- This works!!
 });
 
 //Stop Word Functions and Such
-
 var stopWord = new Array("I","a","about","an","are","as","at","be","by","for","from","how","in","is","it","of","on","or","that","that's",
-						"thats","the","this","to","too","was","what","what's","whats","when","when's","whens","where","where's","wheres",
-						"who","who's","whos","whose","will","with","the");
+	"thats","the","this","to","too","was","what","what's","whats","when","when's","whens","where","where's","wheres",
+	"who","who's","whos","whose","will","with","the");
 
 function isStopWord(word){
 	return stopWord.indexOf(word) >-1;
