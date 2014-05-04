@@ -15,20 +15,6 @@ function tokenizer(term, callback){
 		access_token_key: '2437602979-m8kAsy58Sezf5UJ7T18BUndgcyTKhu9gZCJYrda',
 		access_token_secret: '3mHJ98q7stLjSUvY1Wp8aBIa5mqSkpkQZCINXwLqo3Si3'
 	});
-
-<<<<<<< HEAD
-=======
-function printTweets(term){
-	twit.search(term, function(data) {
-		for (i=0; i<data.statuses.length; i++){
-			console.log(data.statuses[i].text);
-		}
-	});
-}
-
-var globalArray = {};
-function tokenizer(term, callback){
->>>>>>> FETCH_HEAD
 	twit.search(term, function(data) {
 		console.log("data statuses is type", typeof(data.statuses));
 		var wordArray = {};
