@@ -27,18 +27,13 @@ angular.module('wordCloudApp', ['d3', 'nvd3ChartDirectives']);
         $scope.searchData = "";
 
         //console.log(listWords);
-        listWordSize.push("100");
-        /*$.getScript("./javascripts/twitter.js", function(){
-            listWords.push("we made it - Drake");
-            console.log("but its not broken");
-            alert("Script loaded and executed.");
-   // Here you can use anything you defined in the loaded script
-});*/
-listNumWords = (parseInt(listNumWords)+1).toString();
+        listWordSize.push("50");
+        listNumWords = (parseInt(listNumWords)+1).toString();
 
-showWC = !showWC;
-};
-};
+        showWC = !showWC;
+        
+        };
+ };
 
 /*
  * Visualizations

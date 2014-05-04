@@ -1,4 +1,11 @@
-var twitter = require('twitter');
+//twtitter.js
+//CS 326 Spring 2014
+
+//Christopher Scott
+
+//Twitter Setup
+var util = require('util'),
+twitter = require('twitter');
 var twit = new twitter({
 	consumer_key: '5fBdLw6wzZL9S5AKbfaVfZnGn',
 	consumer_secret: 'SGyNotse02dMUP8C6ehYJ1zGmj1vV95TV53N3cMvGopEUdHFm5',
@@ -6,13 +13,8 @@ var twit = new twitter({
 	access_token_secret: '3mHJ98q7stLjSUvY1Wp8aBIa5mqSkpkQZCINXwLqo3Si3'
 });
 
-
-/*---------------------BACK-END----------------*/
-/*
- *TWITTER
- */
 //Pull search term from command line
-/*function userQuery(){
+function userQuery(){
 	//Take input from the command line
 	var readline = require('readline');
 
@@ -37,12 +39,6 @@ function printTweets(term){
 		}
 	});
 }
-*/
-
-
-exports.search = function(req, res) {
-	res.render('search');
-}
 
 function tokenizer(term, callback){
 	twit.search(term, function(data) {
@@ -65,29 +61,15 @@ function tokenizer(term, callback){
 		}callback(wordArray);
 	});
 }
+/*var searchString = ("search/tweets.json?q=%s&result_type=mixed&count=30" , term)
+	twit.get(searchString, {include_entities:true}, function(data) {*/
 
-exports.wordcloud = function(req, res){
-	tokenizer("doge", function(w){
-		//console.log(w);
-		var longAns = '[';
-		for (word in w){
-			if(w[word]>0){
-				longAns += ("%s", word);
-				longAns += "-";
-				longAns += ("%d", w[word]);
-				longAns += ";";
-				longAns += "\t";
-				longAns += " ";
-			}
+//userQuery();
+tokenizer("doge", function(w){
+	//console.log(w);
+	for (word in w){
+		if(w[word]>0){
+			console.log("%s - %d", word, w[word]);
 		}
-		
-		longAns = longAns.substring(0, longAns.length-1)		
-
-		longAns += "]"
-		// res.json(longAns)
-		res.render('index', {
-			title: "LexiCloud",
-			response: longAns
-		});
-	});
-};
+	}
+});
