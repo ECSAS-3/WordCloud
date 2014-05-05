@@ -1,112 +1,10 @@
 //twtitter.js
 //CS 326 Spring 2014
 
-//Christopher Scott
-
-<<<<<<< HEAD
-
-//Twitter Setup
-var util = require('util'),
-twitter = require('twitter');
-var twit = new twitter({
-	consumer_key: '5fBdLw6wzZL9S5AKbfaVfZnGn',
-	consumer_secret: 'SGyNotse02dMUP8C6ehYJ1zGmj1vV95TV53N3cMvGopEUdHFm5',
-	access_token_key: '2437602979-m8kAsy58Sezf5UJ7T18BUndgcyTKhu9gZCJYrda',
-	access_token_secret: '3mHJ98q7stLjSUvY1Wp8aBIa5mqSkpkQZCINXwLqo3Si3'
-});
-
 //NLP Setup
 var natural = require('natural');
 var jaro_winkler = natural.JaroWinklerDistance;		//handling the strings that are close together
 var metaphone = natural.DoubleMetaphone;					//handling what words sound closer together
-
-
- //Pull search term from command line
- function userQuery(){
- 	//Take input from the command line
- 	var readline = require('readline');
-
- 	var rl = readline.createInterface({
- 		input: process.stdin,
- 		output: process.stdout
- 	});
-
- 	rl.question("What would you like to search for? ", function(term) {
- 		twit.search(term, function(data) {
- 			console.log(data);
- 		});
- 		console.log("Querying WordCloud for", term);
- 		rl.close();
- 	});
- }
-
- function printTweets(term){
- 	twit.search(term, function(data) {
-
- 		for (i=0; i<data.statuses.length; i++){
- 			console.log(data.statuses[i].text);
- 		}
- 	});
- }
- var globalArray = {};
-
-
-
- function tokenizer(term, callback){
- 	twit.search(term, function(data) {
- 		//console.log("data statuses is type", typeof(data.statuses));
- 		var wordArray = {};
- 		var len = data.statuses.length;
- 		//console.log(len);
- 		for (var i=0; i<len; i++){
- 			//console.log(data.statuses[i]);
- 			var text = data.statuses[i].text;
- 			var res = text.split(" ");
- 			//console.log(res);
- 			for (var j=0; j<res.length; j++){
- 				var currWord = res[j].toLowerCase();
- 				currWord = currWord.replace(/[\.,-\/!$%\^&\*;:{}=\-_`~()]/g,"");
- 				//console.log("Curr word ", currWord);
- 				if(isStopWord(currWord)){
- 				 	continue;
- 				}
- 				else if (currWord in wordArray){
- 					wordArray[currWord]++;
- 					//console.log(wordArray.res[j]);
- 				} else {
- 					wordArray[currWord] = 1;
- 				}
- 			}
- 		}
- 		globalArray = wordArray;
- 		callback(wordArray);
- 	});
-}
-
- tokenizer("doge", function(w){
- 	//console.log(w);
- 	for (word in w){
- 		if(w[word]>0){
- 			console.log("%s - %d", word, w[word]*2);
- 		}
- 	}
-
-// 	myHash = findHashTags(globalArray, "#");
-// 	console.log("My hash: ", myHash);
-// 	atTable = findHashTags(globalArray, "@");
-// 	console.log("Words with @ Symbols: ", atTable)
-// });
-
-//Stop Word Functionality
-
-var stopWord = new Array("I","a","about","an","are","as","at","be","by","for","from","how","in","is","it","of","on","or","that","that's",
-						"thats","the","this","to","too","was","what","what's","whats","when","when's","whens","where","where's","wheres",
-						"who","who's","whos","whose","will","with","the");
-//console.log("type of stopWord ", typeof(stopWord));
-
-// function isStopWord(theword){
-// 	return (stopWord.indexOf(theword) >-1);
-// }
 
 //Stripping formatting
 
@@ -166,7 +64,6 @@ function testSimilarities(data){
 var q =testSimilarities(testData);
 console.log(q);
 
-=======
 var globalArray = {};
 
 function tokenizer(term, callback){
@@ -252,4 +149,4 @@ function printTweets(term){
 		}
 	});
 }
->>>>>>> aa232b327c8ef025b64f8a4aedd1e6d644207bdf
+
