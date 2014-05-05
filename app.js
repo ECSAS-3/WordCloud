@@ -31,14 +31,14 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+app.get('/', index.search);
 
-app.get('/', index.wordcloud);
+app.get('/wc', index.wordcloud);
 
 //deprecated
 app.get('/wordcloud', function(req, res) {
 		res.sendfile('./public/wc/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 	});
-
 
 
 

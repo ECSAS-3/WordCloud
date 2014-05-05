@@ -38,6 +38,12 @@ function printTweets(term){
 	});
 }
 */
+
+
+exports.search = function(req, res) {
+	res.render('search');
+}
+
 function tokenizer(term, callback){
 	twit.search(term, function(data) {
 		var wordArray = {};
@@ -63,7 +69,7 @@ function tokenizer(term, callback){
 exports.wordcloud = function(req, res){
 	tokenizer("doge", function(w){
 		//console.log(w);
-		var longAns = '';
+		var longAns = '[';
 		for (word in w){
 			if(w[word]>0){
 				longAns += ("%s", word);
@@ -74,6 +80,11 @@ exports.wordcloud = function(req, res){
 				longAns += " ";
 			}
 		}
+		
+		longAns = longAns.substring(0, longAns.length-1)		
+
+		longAns += "]"
+		// res.json(longAns)
 		res.render('index', {
 			title: "LexiCloud",
 			response: longAns
